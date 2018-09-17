@@ -56,7 +56,8 @@ function collectMessages(tree) {
     var result = {};
 
     for (var key in tree) {
-        if (tree.hasOwnProperty(key)) {
+        // Don't try to map out the internal Mongoose field "$$context".
+        if (key !== '$$context' && tree.hasOwnProperty(key)) {
             if (
                 typeof tree[key] === 'object'
                 && tree[key] !== null
